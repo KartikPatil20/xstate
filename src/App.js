@@ -1,5 +1,4 @@
 import React, {useState, useEffect} from 'react';
-
 import './App.css';
 
 function App() {
@@ -61,7 +60,7 @@ function App() {
         })}
       </select>
 
-        { selectedCity && <p><span>You Selected</span> <span className='cityname'>{selectedCity}</span>, {selectedState}, {selectedCountry}</p>}
+        { selectedCity && <p><span>You selected</span> <span className='cityname'>{selectedCity}</span>, {selectedState}, {selectedCountry}</p>}
 
     </div>
   );
