@@ -14,7 +14,7 @@ function App() {
   useEffect(()=>{
     fetch("https://crio-location-selector.onrender.com/countries")
     .then((res) => res.json())
-    .then((data) => setCountries(data))
+    .then((data) => {setCountries(data)})
     .catch((e)=>console.error("Error in fetching countries", e))
   },[])
 
@@ -22,7 +22,8 @@ function App() {
     if(selectedCountry){
       fetch(`https://crio-location-selector.onrender.com/country=${selectedCountry}/states`)
       .then((res) => res.json())
-      .then((data) => setStates(data))
+      .then((data) => {setStates(data); setSelectedstate(""); setCities([]); setSelectedcity("")})
+      .catch((e) => console.log("Error in fetching states", e))
     }
   },[selectedCountry])
 
@@ -30,7 +31,8 @@ function App() {
     if(selectedState && selectedCountry){
       fetch(`https://crio-location-selector.onrender.com/country=${selectedCountry}/state=${selectedState}/cities`)
       .then((res) => res.json())
-      .then((data) => setCities(data))
+      .then((data) => {setCities(data); setSelectedcity("")})
+      .catch((e)=> console.log("Error in fetching cities", e))
     }
   },[selectedCountry, selectedState])
 
